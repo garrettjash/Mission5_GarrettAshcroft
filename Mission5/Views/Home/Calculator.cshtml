@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Services";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Interested in a walkthrough? I'd love to help! Enter how many hours you want to schedule below to get a quote!</p>
+
+<label>Number of Hours:</label>
+@* A box for the user to enter the number of hours they need from you *@
+<input id="hours" type="number"/>
+<br />
+@* An non-editable box that shows how much you charge per hour *@
+<label>Hourly Rate: $</label><label id="rate">200</label>
+<br />
+@* A button that allows the user to calculate the total *@
+<button type="button" onclick="Calculate()">Calculate!</button>
+<br />
+<br />
+@* An output box that shows the total *@
+<label>Total: $</label><label id="total">0</label>
+
+
+<script>
+    function Calculate() 
+    {
+        let iHours = parseFloat($('#hours').val());
+
+        //Validation to make sure they actually entered a positive number
+        if (iHours < 0)
+        {
+            alert('Try a number more than 0!');
+            $('#hours').val(0);
+        }
+        else
+        {
+            let iRate = parseFloat($('#rate').text());
+
+            let iTotal = iHours * iRate;
+
+            $('#total').html(iTotal);
+        }
+    }
+</script>
+
+
+
+
+
+@*     • A box for the user to enter the number of hours they need from you
+    • Validation to make sure they actually entered a positive number
+    • An non-editable box that shows how much you charge per hour
+    • A button that allows the user to calculate the total
+    • An output box that shows the total
+    • Navigation back to the home page *@
